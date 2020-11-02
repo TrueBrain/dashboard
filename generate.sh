@@ -10,6 +10,7 @@ eints
 master-server
 master-server-web
 nml
+OpenTTD
 py-helpers
 website
 "
@@ -23,12 +24,12 @@ for repo in ${REPOS}; do
     echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/master?label=)](https://github.com/OpenTTD/${repo}/commits/master)" >> README.md
     if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ]; then
         echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Release?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
-    elif [ "${repo}" = "actions" ]; then
+    elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ]; then
         echo -n "|" >> README.md
     else
         echo -n "| [![Publish Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Publish%20image?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Publish%20image%22)" >> README.md
     fi
-    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ]; then
+    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ]; then
         echo -n "|" >> README.md
         echo -n "|" >> README.md
     else
