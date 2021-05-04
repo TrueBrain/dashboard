@@ -13,6 +13,7 @@ nml
 OpenTTD
 py-helpers
 website
+workflows
 "
 
 echo "## OpenTTD" > README.md
@@ -22,7 +23,9 @@ echo "| --- | --- | --- | --- | --- | --- |" >> README.md
 for repo in ${REPOS}; do
     echo -n "| ${repo}" >> README.md
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/OpenTTD/${repo}?label=)](https://github.com/OpenTTD/${repo}/pulls)" >> README.md
-    if [ "${repo}" = "eints" ]; then
+    if [ "${repo}" = "workflows" ]; then
+        echo -n "|" >> README.md
+    elif [ "${repo}" = "eints" ]; then
         echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/master?label=)](https://github.com/OpenTTD/${repo}/commits/master)" >> README.md
         echo -n " / [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/openttd-github?label=)](https://github.com/OpenTTD/${repo}/commits/openttd-github)" >> README.md
     else
@@ -30,12 +33,12 @@ for repo in ${REPOS}; do
     fi
     if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ]; then
         echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Release?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
-    elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ]; then
+    elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ]; then
         echo -n "|" >> README.md
     else
         echo -n "| [![Publish Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Publish%20image?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Publish%20image%22)" >> README.md
     fi
-    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ]; then
+    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ]; then
         echo -n "|" >> README.md
         echo -n "|" >> README.md
     else
