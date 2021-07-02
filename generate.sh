@@ -16,20 +16,32 @@ website
 workflows
 "
 
+REPOS_MAIN="
+actions
+DorpsGek
+"
+
 echo "## OpenTTD" > README.md
 echo "| Name | PRs | Commits | Release | Staging | Production |" >> README.md
 echo "| --- | --- | --- | --- | --- | --- |" >> README.md
 
 for repo in ${REPOS}; do
+    branch="master"
+    for repo_main in ${REPOS_MAIN}; do
+        if [ "${repo}" = "${repo_main}" ]; then
+            branch="main"
+        fi
+    done
+
     echo -n "| ${repo}" >> README.md
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/OpenTTD/${repo}?label=)](https://github.com/OpenTTD/${repo}/pulls)" >> README.md
     if [ "${repo}" = "workflows" ]; then
         echo -n "|" >> README.md
     elif [ "${repo}" = "eints" ]; then
-        echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/master?label=)](https://github.com/OpenTTD/${repo}/commits/master)" >> README.md
+        echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/${branch}?label=)](https://github.com/OpenTTD/${repo}/commits/${branch})" >> README.md
         echo -n " / [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/openttd-github?label=)](https://github.com/OpenTTD/${repo}/commits/openttd-github)" >> README.md
     else
-        echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/master?label=)](https://github.com/OpenTTD/${repo}/commits/master)" >> README.md
+        echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/${branch}?label=)](https://github.com/OpenTTD/${repo}/commits/${branch})" >> README.md
     fi
     if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ]; then
         echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Release?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
@@ -59,14 +71,26 @@ truewiki
 wikitexthtml
 "
 
+REPOS_MAIN="
+actions=flake8
+truewiki
+"
+
 echo "## TrueBrain" >> README.md
 echo "| Name | PRs | Commits | Release | Staging | Production |" >> README.md
 echo "| --- | --- | --- | --- | --- | --- |" >> README.md
 
 for repo in ${REPOS}; do
+    branch="master"
+    for repo_main in ${REPOS_MAIN}; do
+        if [ "${repo}" = "${repo_main}" ]; then
+            branch="main"
+        fi
+    done
+
     echo -n "| ${repo}" >> README.md
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/TrueBrain/${repo}?label=)](https://github.com/TrueBrain/${repo}/pulls)" >> README.md
-    echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/TrueBrain/${repo}/latest/master?label=)](https://github.com/TrueBrain/${repo}/commits/master)" >> README.md
+    echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/TrueBrain/${repo}/latest/${branch}?label=)](https://github.com/TrueBrain/${repo}/commits/${branch})" >> README.md
     if [ "${repo}" = "wikitexthtml" ]; then
         echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/TrueBrain/${repo}/Release?label=)](https://github.com/TrueBrain/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
     else
