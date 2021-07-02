@@ -17,9 +17,10 @@ website
 workflows
 "
 
-REPOS_MAIN="
-actions
-DorpsGek
+REPOS_MASTER="
+eints
+nml
+OpenTTD
 "
 
 echo "## OpenTTD" > README.md
@@ -27,10 +28,10 @@ echo "| Name | PRs | Commits | Release | Staging | Production |" >> README.md
 echo "| --- | --- | --- | --- | --- | --- |" >> README.md
 
 for repo in ${REPOS}; do
-    branch="master"
-    for repo_main in ${REPOS_MAIN}; do
-        if [ "${repo}" = "${repo_main}" ]; then
-            branch="main"
+    branch="main"
+    for repo_master in ${REPOS_MASTER}; do
+        if [ "${repo}" = "${repo_master}" ]; then
+            branch="master"
         fi
     done
 
@@ -72,23 +73,12 @@ truewiki
 wikitexthtml
 "
 
-REPOS_MAIN="
-actions=flake8
-truewiki
-"
-
 echo "## TrueBrain" >> README.md
 echo "| Name | PRs | Commits | Release | Staging | Production |" >> README.md
 echo "| --- | --- | --- | --- | --- | --- |" >> README.md
 
+branch="main"
 for repo in ${REPOS}; do
-    branch="master"
-    for repo_main in ${REPOS_MAIN}; do
-        if [ "${repo}" = "${repo_main}" ]; then
-            branch="main"
-        fi
-    done
-
     echo -n "| ${repo}" >> README.md
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/TrueBrain/${repo}?label=)](https://github.com/TrueBrain/${repo}/pulls)" >> README.md
     echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/TrueBrain/${repo}/latest/${branch}?label=)](https://github.com/TrueBrain/${repo}/commits/${branch})" >> README.md
