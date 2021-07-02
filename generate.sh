@@ -3,6 +3,7 @@
 REPOS="
 actions
 bananas-api
+bananas-frontend-cli
 bananas-frontend-web
 bananas-server
 DorpsGek
@@ -45,12 +46,12 @@ for repo in ${REPOS}; do
     fi
     if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ]; then
         echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Release?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
-    elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ]; then
+    elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ] || [ "${repo}" = "bananas-frontend-cli" ]; then
         echo -n "|" >> README.md
     else
         echo -n "| [![Publish Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Publish%20image?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Publish%20image%22)" >> README.md
     fi
-    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ]; then
+    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ] || [ "${repo}" = "bananas-frontend-cli" ]; then
         echo -n "|" >> README.md
         echo -n "|" >> README.md
     else
