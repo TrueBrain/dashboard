@@ -8,6 +8,7 @@ bananas-frontend-web
 bananas-server
 DorpsGek
 eints
+game-coordinator
 master-server
 master-server-web
 nml
@@ -18,7 +19,6 @@ workflows
 "
 
 REPOS_MASTER="
-eints
 nml
 OpenTTD
 "
@@ -39,9 +39,6 @@ for repo in ${REPOS}; do
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/OpenTTD/${repo}?label=)](https://github.com/OpenTTD/${repo}/pulls)" >> README.md
     if [ "${repo}" = "workflows" ]; then
         echo -n "|" >> README.md
-    elif [ "${repo}" = "eints" ]; then
-        echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/${branch}?label=)](https://github.com/OpenTTD/${repo}/commits/${branch})" >> README.md
-        echo -n " / [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/openttd-github?label=)](https://github.com/OpenTTD/${repo}/commits/openttd-github)" >> README.md
     else
         echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/${branch}?label=)](https://github.com/OpenTTD/${repo}/commits/${branch})" >> README.md
     fi
