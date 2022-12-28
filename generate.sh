@@ -7,6 +7,7 @@ bananas-frontend-cli
 bananas-frontend-web
 bananas-server
 DorpsGek
+dibridge
 eints
 game-coordinator
 master-server
@@ -42,12 +43,12 @@ for repo in ${REPOS}; do
     else
         echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/OpenTTD/${repo}/latest/${branch}?label=)](https://github.com/OpenTTD/${repo}/commits/${branch})" >> README.md
     fi
-    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ]; then
-        echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Release?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
+    if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "DorpsGek" ] || [ "${repo}" = "dibridge" ]; then
+        echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/actions/workflow/status/OpenTTD/${repo}/release.yml?label=)](https://github.com/OpenTTD/${repo}/actions/workflows/release.yml)" >> README.md
     elif [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ] || [ "${repo}" = "bananas-frontend-cli" ]; then
         echo -n "|" >> README.md
     else
-        echo -n "| [![Publish Workflow ${repo}](https://img.shields.io/github/workflow/status/OpenTTD/${repo}/Publish%20image?label=)](https://github.com/OpenTTD/${repo}/actions?query=workflow%3A%22Publish%20image%22)" >> README.md
+        echo -n "| [![Publish Workflow ${repo}](https://img.shields.io/github/actions/workflow/status/OpenTTD/${repo}/publish.yml?label=)](https://github.com/OpenTTD/${repo}/actions/workflows/publish.yml)" >> README.md
     fi
     if [ "${repo}" = "nml" ] || [ "${repo}" = "py-helpers" ] || [ "${repo}" = "actions" ] || [ "${repo}" = "OpenTTD" ] || [ "${repo}" = "workflows" ] || [ "${repo}" = "bananas-frontend-cli" ]; then
         echo -n "|" >> README.md
@@ -80,7 +81,7 @@ for repo in ${REPOS}; do
     echo -n "| [![PRs ${repo}](https://img.shields.io/github/issues-pr/TrueBrain/${repo}?label=)](https://github.com/TrueBrain/${repo}/pulls)" >> README.md
     echo -n "| [![Commits ${repo}](https://img.shields.io/github/commits-since/TrueBrain/${repo}/latest/${branch}?label=)](https://github.com/TrueBrain/${repo}/commits/${branch})" >> README.md
     if [ "${repo}" = "wikitexthtml" ]; then
-        echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/workflow/status/TrueBrain/${repo}/Release?label=)](https://github.com/TrueBrain/${repo}/actions?query=workflow%3A%22Release%22)" >> README.md
+        echo -n "| [![Release Workflow ${repo}](https://img.shields.io/github/actions/workflow/status/TrueBrain/${repo}/release.yml?label=)](https://github.com/TrueBrain/${repo}/actions/workflows/release.yml)" >> README.md
     else
         echo -n "|" >> README.md
     fi
